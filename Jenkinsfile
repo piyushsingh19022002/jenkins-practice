@@ -15,14 +15,14 @@ pipeline {
         stage('Build Docker Image'){
             steps {
                 // 🛠️ docker ke pehle poora path (/usr/local/bin/) likh diya
-                sh "/usr/local/bin/docker build -t ${IMAGE_NAME} ."
+                sh "docker build -t ${IMAGE_NAME} ."
             }
         }
         
         stage('Show Docker Images'){
             steps {
                 // 🛠️ Yahan bhi full path de diya
-                sh '/usr/local/bin/docker images'
+                sh 'docker images'
             }
         }
     }
