@@ -7,13 +7,13 @@ pipeline {
     stages {
         stage('Checkout Code'){
              steps {
-                git 'https://github.com/piyushsingh19022002/jenkins-practice.git'
+                git branch: 'main', url: 'https://github.com/piyushsingh19022002/jenkins-practice.git'
             }
         }
        
         stage('Build Docker Image'){
             steps {
-                sh 'docker build -t %IMAGE_NAME% .'
+                sh "docker build -t ${IMAGE_NAME} ."
             }
         }
         
@@ -22,6 +22,5 @@ pipeline {
                 sh 'docker images'
             }
         }
-        
     }
 }
