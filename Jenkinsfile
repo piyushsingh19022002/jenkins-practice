@@ -5,6 +5,7 @@ pipeline {
     }
     
     stages {
+        // Tip: Aap is pure 'Checkout Code' stage ko ab delete bhi kar sakte hain
         stage('Checkout Code'){
              steps {
                 git branch: 'main', url: 'https://github.com/piyushsingh19022002/jenkins-practice.git'
@@ -13,13 +14,15 @@ pipeline {
        
         stage('Build Docker Image'){
             steps {
-                sh "docker build -t ${IMAGE_NAME} ."
+                // 🛠️ docker ke pehle poora path (/usr/local/bin/) likh diya
+                sh "/usr/local/bin/docker build -t ${IMAGE_NAME} ."
             }
         }
         
         stage('Show Docker Images'){
             steps {
-                sh 'docker images'
+                // 🛠️ Yahan bhi full path de diya
+                sh '/usr/local/bin/docker images'
             }
         }
     }
